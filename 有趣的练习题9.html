@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        
+        function foo(){
+            foo.a=function(){console.log(1)};    
+            this.a=function(){console.log(2);return 12;};  //this==>window window.a=f(){}
+            
+            a=function(){console.log(3)};      //undefined 
+            var a=function(){console.log(4)};   //只能在局部使用
+        }
+        
+        foo.prototype.a=function(){   
+            console.log(5)     
+        };
+        foo.a=function(){        
+            console.log(6)  
+        };
+       
+        foo.a();      //6  这里的foo()方法还没有被引用 只能去调用表达式foo.a=function(){console.log(6)}
+        var obj=new foo();  //这里引用了foo()方法  window.obj
+        obj.a();    //     obj.a()==>foo(){this.a=funciton(){ 函数中如果没有返回值，this.a=f(){}返回值是undefined，那么obj.a()结果就是undefined }}  
+       
+        //window.foo().a()  找a() 第一个不是 第二个是输出2 如果没有this.a就去原型中找
+        // foo.a();            
+    </script>
+</body>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <button>1</button>
+    <button>2</button>
+    <button>3</button>
+    <script>
+        
+        // var buttons=document.getElementsByTagName('button')[0];
+        var buttons=[{name:'b1'},{name:'b2'},{name:'b3'}];
+        function bind(){
+            for(var i=0;i<buttons.length;i++){
+                (function(j){
+                    buttons[j].onclick=function(){
+                    console.log(j);
+                    }
+                }(i));
+
+                // buttons[i].onclick=function(){   //button[0].onclick=function(){};后面的函数要直到for循环结束后运行
+                    // console.log(i);
+                }
+            }
+        
+        bind();
+        buttons[0].onclick();
+        buttons[1].onclick();
+        buttons[2].onclick();
+    </script>
+</body>
+</html>

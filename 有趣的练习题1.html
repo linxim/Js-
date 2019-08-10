@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var x=8;
+        var objA={
+            x:"good",
+            y:32
+        }
+        function add(x,y){
+            console.log(x.y+y); //5+3 //8
+        }
+        function fn(x,y){ //objA add
+            x.y=5;          //objA.y=5;
+            y(x,3);         //add(objA,3)
+        }
+        fn(objA,add);   //8
+        console.log(objA); //x:"good",y:8
+    </script>
+</body>
+</html>

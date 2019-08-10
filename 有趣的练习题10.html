@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var name='lili';
+        var obj={
+            name:'liming',
+            prop:{
+                name:'ivan',
+                getname:function(){
+                    return this.name;
+                }
+            }
+        };
+        console.log(obj.prop.getname()); //obj{prop:getname()} //prop:name  'ivan'
+        var test=obj.prop.getname;             
+        console.log(test());            
+        var test=obj.prop.getname.bind(obj.prop);  //function(obj.prop){return this.name} 'ivan'
+        console.log(test());    
+        console.log(test.call(obj.prop));  //'ivan'
+        console.log(test.apply(obj.prop));
+    </script>
+</body>
+</html>
